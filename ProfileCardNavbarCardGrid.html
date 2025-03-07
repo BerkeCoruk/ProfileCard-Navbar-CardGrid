@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Combined</title>
+    <script
+      src="https://kit.fontawesome.com/4907c8bc8f.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Arial', sans-serif;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 30px;
+        margin: 10px 0;
+      }
+      .brand {
+        font-size: 24px;
+        font-weight: bold;
+      }
+      .nav-links {
+        display: flex;
+        gap: 20px;
+      }
+      .nav-links a {
+        text-decoration: none;
+        font-size: 16px;
+        transition: color 0.3s;
+      }
+      .search-box {
+        display: flex;
+        gap: 10px;
+      }
+      .search-box input {
+        padding: 8px;
+        border: none;
+        border-radius: 5px;
+      }
+      .search-box button {
+        padding: 8px 12px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .navbar.dark {
+        background: #1e1e2f;
+        color: white;
+      }
+      .navbar.dark .nav-links a {
+        color: white;
+      }
+      .navbar.dark .nav-links a:hover {
+        color: #ff758c;
+      }
+      .navbar.dark .search-box button {
+        background: #ff758c;
+        color: white;
+      }
+      .navbar.dark .search-box button:hover {
+        background: #e6004c;
+      }
+
+      .navbar.light {
+        background: #dbe6f1;
+        color: #212529;
+      }
+      .navbar.light .nav-links a {
+        color: #007bff;
+      }
+      .navbar.light .nav-links a:hover {
+        color: #0056b3;
+      }
+      .navbar.light .search-box button {
+        background: #28a745;
+        color: white;
+      }
+      .navbar.light .search-box button:hover {
+        background: #218838;
+      }
+
+      .navbar.blue {
+        background: #0077b6;
+        color: white;
+      }
+      .navbar.blue .nav-links a {
+        color: #90e0ef;
+      }
+      .navbar.blue .nav-links a:hover {
+        color: #caf0f8;
+      }
+      .navbar.blue .search-box button {
+        background: #00b4d8;
+        color: white;
+      }
+      .navbar.blue .search-box button:hover {
+        background: #0096c7;
+      }
+
+      .profile-section {
+        background: #f0f0f5;
+        padding: 40px 20px;
+        display: flex;
+        justify-content: center;
+      }
+      .profile-card {
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        text-align: center;
+        width: 320px;
+        padding: 20px;
+      }
+      .cover {
+        background: linear-gradient(to right, #ff7eb3, #f3627a);
+        height: 90px;
+        border-radius: 15px 15px 0 0;
+      }
+      .profile-img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin-top: -50px;
+        border: 5px solid white;
+        object-fit: cover;
+      }
+      .profile-card h2 {
+        margin: 12px 0;
+        font-size: 22px;
+        color: #222;
+      }
+      .profile-card p {
+        color: #444;
+        font-size: 15px;
+      }
+      .social-icons {
+        margin: 18px 0;
+      }
+      .social-icons a {
+        margin: 0 12px;
+        color: #ff758c;
+        font-size: 22px;
+        transition: transform 0.3s, color 0.3s;
+      }
+      .social-icons a:hover {
+        color: #ff3b6f;
+        transform: scale(1.2);
+      }
+      .buttons {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+      }
+      .buttons button {
+        border: none;
+        padding: 12px 18px;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+      .subscribe {
+        background: #ff3b6f;
+        color: white;
+      }
+      .subscribe:hover {
+        background: #e6004c;
+        transform: scale(1.05);
+      }
+      .message {
+        background: #ffbd69;
+        color: white;
+      }
+      .message:hover {
+        background: #ff9f1a;
+        transform: scale(1.05);
+      }
+
+      .games-section {
+        background: #2a2d3a;
+        color: white;
+        padding: 40px 20px;
+      }
+      .grid-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+      .card {
+        background: #3b3f54;
+        border-radius: 15px;
+        padding: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s;
+        flex: 1 1 280px;
+        max-width: 300px;
+      }
+      .card:hover {
+        transform: scale(1.05);
+      }
+      .card img {
+        width: 100%;
+        border-radius: 10px;
+        height: 180px;
+        object-fit: cover;
+      }
+      .card h3 {
+        margin: 10px 0;
+        font-size: 20px;
+      }
+      .card p {
+        font-size: 14px;
+        color: #b0b3c1;
+        margin-bottom: 10px;
+      }
+      .price {
+        font-size: 18px;
+        font-weight: bold;
+        color: #ffb400;
+      }
+
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+        .navbar {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .search-box {
+          margin-top: 10px;
+        }
+        .grid-container {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar dark">
+      <div class="brand">NavBar</div>
+      <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Products</a>
+      </div>
+      <div class="search-box">
+        <input type="text" placeholder="Search" />
+        <button>Search</button>
+      </div>
+    </nav>
+    <br />
+    <nav class="navbar light">
+      <div class="brand">NavBar</div>
+      <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Products</a>
+      </div>
+      <div class="search-box">
+        <input type="text" placeholder="Search" />
+        <button>Search</button>
+      </div>
+    </nav>
+    <br />
+    <nav class="navbar blue">
+      <div class="brand">NavBar</div>
+      <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Products</a>
+      </div>
+      <div class="search-box">
+        <input type="text" placeholder="Search" />
+        <button>Search</button>
+      </div>
+    </nav>
+
+    <div class="profile-section">
+      <div class="profile-card">
+        <div class="cover"></div>
+        <img
+          class="profile-img"
+          src="https://media.istockphoto.com/id/526947869/vector/man-silhouette-profile-picture.jpg?s=612x612&w=0&k=20&c=5I7Vgx_U6UPJe9U2sA2_8JFF4grkP7bNmDnsLXTYlSc="
+          alt="Profil"
+        />
+        <h2>Berke Coruk</h2>
+        <p>Frontend Developer</p>
+        <div class="social-icons">
+          <a href="https://x.com/home"
+            ><i class="fa-brands fa-x-twitter"></i
+          ></a>
+          <a href="https://www.linkedin.com/in/berke-coruk-063014148/"
+            ><i class="fab fa-linkedin"></i
+          ></a>
+          <a href="https://github.com/BerkeCoruk"
+            ><i class="fab fa-github"></i
+          ></a>
+        </div>
+        <div class="buttons">
+          <button class="subscribe">Takip Et</button>
+          <button class="message">Mesaj</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="games-section">
+      <div class="grid-container">
+        <div class="card">
+          <img
+            src="https://image.api.playstation.com/vulcan/img/rnd/202111/0506/hcFeWRVGHYK72uOw6Mn6f4Ms.jpg"
+            alt="Elden Ring"
+          />
+          <h3>Elden Ring</h3>
+          <p>
+            Tarnished, yüksel ve zarafetin seni yönlendirmesine izin ver. Elden
+            Ring'in gücünü kullan ve Lands Between'de bir Elden Lord ol.
+          </p>
+          <span class="price">$39.99</span>
+        </div>
+        <div class="card">
+          <img
+            src="https://image.api.playstation.com/vulcan/ap/rnd/202212/0814/9uU0gBq02jmXHtDsm82AV722.jpg"
+            alt="The Witcher 3: Wild Hunt"
+          />
+          <h3>The Witcher 3: Wild Hunt</h3>
+          <p>
+            Efsanevi kiralık canavar avcısı Rivialı Geralt rolüne bürünün.
+            Savaştan harap olmuş, dört bir yanı canavarlarla kaplı bir kıta,
+            keşfedilmek üzere sizi bekliyor. Sıradaki sözleşmenizse, dünyayı
+            yeniden şekillendirebilecek güçte bir canlı silahı, Kehanetin Çocuğu
+            Ciri'yi bulmak.
+          </p>
+          <span class="price">$37.99</span>
+        </div>
+        <div class="card">
+          <img
+            src="https://image.api.playstation.com/vulcan/img/rnd/202011/1215/WyHa1BM3ISDVqYSEUMB9VZJs.png"
+            alt="Red Dead Redemption 2"
+          />
+          <h3>Red Dead Redemption 2</h3>
+          <p>
+            175 kez Yılın Oyunu ödülü ve 250 kez tam puan değerlendirme alan Red
+            Dead Redemption 2 yeni çağın şafağında Vahşi Batıda Artur Morgan ve
+            Van der Linde çetesinin hikayesini anlatan görkemli bir onur ve
+            sadakat destanı. Ayrıca, paylaşımlı ve canlı Red Dead Online
+            dünyasına da erişim sağlıyor.
+          </p>
+          <span class="price">$59.99</span>
+        </div>
+        <div class="card">
+          <img
+            src="https://image.api.playstation.com/vulcan/ap/rnd/202308/1519/95cce955dc59d04e2ea5ab624a823ace14e9c5f7e24dfb8f.png"
+            alt="Baldur's Gate 3"
+          />
+          <h3>Baldur's Gate 3</h3>
+          <p>
+            Partini topla ve dostluk, ihanet, fedakârlık, hayatta kalma ve
+            mutlak güç arzusuyla dolu bir hikâyede Unutulmuş Diyarlar'a dön.
+          </p>
+          <span class="price">$34.99</span>
+        </div>
+        <div class="card">
+          <img
+            src="https://image.api.playstation.com/vulcan/ap/rnd/202408/0108/3ffd649b69caa69ef04a3fdcd085f3397831e1e0c55af074.png"
+            alt="Kingdom Come: Deliverance II"
+          />
+          <h3>Kingdom Come: Deliverance II</h3>
+          <p>
+            Zengin bir açık dünyaya sahip, 15. yüzyıl Ortaçağ Avrupa'sında geçen
+            heyecan verici ve hikâye odaklı bir aksiyon RYO. Destansı boyutlarda
+            bir yolculuğa çıkarken, genç Henry'nin gözünden nihai ortaçağ
+            macerasını tecrübe et.
+          </p>
+          <span class="price">$44.99</span>
+        </div>
+        <div class="card">
+          <img
+            src="https://image.api.playstation.com/vulcan/ap/rnd/202109/2821/LK1BOGkl8D9asemyQTPNAp69.jpg"
+            alt="God of War Ragnarök"
+          />
+          <h3>God of War Ragnarök</h3>
+          <p>
+            Ragnarök kapıda, Kratos ve Atreus ise cevap arayışında destansı bir
+            yolculuğa çıkıyor.
+          </p>
+          <span class="price">$49.99</span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
